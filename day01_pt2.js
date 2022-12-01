@@ -25,7 +25,6 @@ for (let i = 0; i < intMap.length; i++) {
 }
 
 //console.log(elfTotals)
-
 let sorted = elfTotals.sort((a, b) => b - a)
 let topThree = sorted[0] + sorted[1] + sorted[2]
 console.log(`the answer is ${topThree}`)
