@@ -5,11 +5,11 @@ with open('day02_input.txt') as f:
 def calculateScore(opp, me):
     if opp == "A":
         if me == "X":
-            return 4
-        elif me == "Y":
-            return 8
-        elif me == "Z":
             return 3
+        elif me == "Y":
+            return 4
+        elif me == "Z":
+            return 8
     elif opp == "B":
         if me == "X":
             return 1
@@ -19,11 +19,11 @@ def calculateScore(opp, me):
             return 9
     elif opp == "C":
         if me == "X":
-            return 7
-        elif me == "Y":
             return 2
-        elif me == "Z":
+        elif me == "Y":
             return 6
+        elif me == "Z":
+            return 7
 
 
 answer = 0
