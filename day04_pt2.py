@@ -15,25 +15,25 @@ for range_pair in input:
 # print(range_pairs)
 
 
-def find_smaller(range_pair):
-    range1 = range_pair["end1"] - range_pair["start1"]
-    range2 = range_pair["end2"] - range_pair["start2"]
-    if range1 >= range2:
-        return 2
-    else:
+def find_higher_start(range_pair):
+    start1 = range_pair['start1']
+    start2 = range_pair['start2']
+    if start1 >= start2:
         return 1
+    else:
+        return 2
 
 
 def check_range(range_pair):
-    smaller = find_smaller(range_pair)
     start1 = range_pair['start1']
     end1 = range_pair['end1']
     start2 = range_pair['start2']
     end2 = range_pair['end2']
-    if smaller == 1:
-        return start1 >= start2 and end1 <= end2
+    higher_start = find_higher_start(range_pair)
+    if higher_start == 1:
+        return start1 <= end2
     else:
-        return start2 >= start1 and end2 <= end1
+        return start2 <= end1
 
 
 answer = 0
