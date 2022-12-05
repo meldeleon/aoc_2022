@@ -34,22 +34,20 @@ rangePairs.forEach((pair) => {
 console.log({ answer })
 function rangeCheck(rangePair) {
   let { start1, end1, start2, end2 } = rangePair
-  let smaller = findSmaller(rangePair)
+  let higherStart = findHigherStart(rangePair)
   //console.log(smaller)
-  if (smaller === 1) {
-    return start1 >= start2 && end1 <= end2
+  if (higherStart === 1) {
+    return start1 <= end2
   } else {
-    return start2 >= start1 && end2 <= end1
+    return start2 <= end1
   }
 }
 
-function findSmaller(rangePair) {
+function findHigherStart(rangePair) {
   let { start1, end1, start2, end2 } = rangePair
-  let range1 = parseInt(end1 - start1)
-  let range2 = parseInt(end2 - start2)
-  if (range1 >= range2) {
-    return 2
-  } else {
+  if (start1 >= start2) {
     return 1
+  } else {
+    return 2
   }
 }
