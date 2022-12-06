@@ -20,14 +20,6 @@ input.forEach((pair) => {
 let answer = 0
 rangePairs.forEach((pair) => {
   if (rangeCheck(pair)) {
-    // console.log(
-    //   `TRUE: ${pair.start1} - ${pair.end1} and ${pair.start2} - ${pair.end2}`
-    // )
-    answer++
-  } else {
-    // console.log(
-    //   `FALSE: ${pair.start1} - ${pair.end1} and ${pair.start2} - ${pair.end2}`
-    // )
   }
 })
 
@@ -35,7 +27,6 @@ console.log({ answer })
 function rangeCheck(rangePair) {
   let { start1, end1, start2, end2 } = rangePair
   let smaller = findSmaller(rangePair)
-  //console.log(smaller)
   if (smaller === 1) {
     return start1 >= start2 && end1 <= end2
   } else {
