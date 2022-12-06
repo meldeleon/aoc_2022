@@ -1,5 +1,10 @@
 with open('day05_input.txt') as f:
     instructions = f.read().splitlines()
+# stacks = {
+#     1: ["Z", "N"],
+#     2: ["M", "C", "D"],
+#     3: ["P"],
+# }
 
 stacks = {
     1: ["R", "N", "P", "G"],
@@ -14,21 +19,26 @@ stacks = {
 }
 
 
-def move_crate(origin, dest, stacks):
+def move_crates(count, origin, dest, stacks):
     after_stacks = stacks.copy()
-    moving = after_stacks[origin].pop()
-    after_stacks[dest].append(moving)
+    moving = []
+    for i in range(count):
+        moving.append(after_stacks[origin].pop())
+    moving.reverse()
+    # print(moving)
+    after_stacks[dest].extend(moving)
     # print(after_stacks)
     return after_stacks
 
 
 for instruction in instructions:
     arr = instruction.split(" ")
-    rep = int(arr[1])
+    count = int(arr[1])
     origin = int(arr[3])
     dest = int(arr[5])
-    for i in range(rep):
-        stacks = move_crate(origin, dest, stacks)
+    stacks = move_crates(count, origin, dest, stacks)
+    print(stacks)
+
 
 answer = []
 for stack in stacks.values():

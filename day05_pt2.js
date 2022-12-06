@@ -1,5 +1,5 @@
 const { strictEqual } = require("assert")
-//little input
+// little input
 // let stacks = {
 //   1: ["Z", "N"],
 //   2: ["M", "C", "D"],

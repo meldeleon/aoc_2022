@@ -1,5 +1,3 @@
-const { strictEqual } = require("assert")
-
 let stacks = {
   1: ["R", "N", "P", "G"],
   2: ["T", "J", "B", "L", "C", "S", "V", "H"],
