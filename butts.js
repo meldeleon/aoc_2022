@@ -1,53 +1,11 @@
-var pwd = ["/"]
-const dictionary = {
-  "/": {
-    type: "dir",
-    contents: [],
-    size: 0,
-  },
-}
+let butts = [
+  { height: "3", coordinate: [0, 1] },
+  { height: "3", coordinate: [0, 1] },
+  { height: "3", coordinate: [2, 2] },
+  { height: "0", coordinate: [1, 2] },
+  { height: "3", coordinate: [1, 1] },
+]
 
-handleLsResponse("/", "dir", "a")
-handleLsResponse("a", "29116", "f")
-
-console.log(dictionary)
-
-function handleLsResponse(parent, prefix, name) {
-  addToParent(parent, name)
-  if (prefix === "dir") {
-    addToDict("dir", name)
-  } else {
-    addToDict("file", name, prefix)
-  }
-}
-
-function addToParent(parent, name) {
-  if (dictionary[parent]) {
-    dictionary[parent].contents.push(name)
-  } else {
-    dictionary[parent] = {
-      type: "dir",
-      contents: [name],
-      size: 0,
-    }
-  }
-}
-
-function addToDict(type, name, size) {
-  if (dictionary[name]) {
-  } else {
-    if (type === "dir") {
-      dictionary[name] = {
-        type: "dir",
-        contents: [],
-        size: 0,
-      }
-    } else {
-      dictionary[name] = {
-        type: "file",
-        contents: [],
-        size: size,
-      }
-    }
-  }
-}
+let butts2 = [
+  [0,1]: {height: "3"}
+]

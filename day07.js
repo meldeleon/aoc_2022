@@ -39,7 +39,15 @@ Object.keys(dictionary).forEach((entryName) => {
   }
 })
 
-console.log(dictionary)
+let solution = 0
+for (entry in dictionary) {
+  //console.log(entry)
+  if (dictionary[entry].type === "dir" && dictionary[entry].size < 100000) {
+    solution += parseInt(dictionary[entry].size)
+  }
+}
+
+console.log(`The solution is ${solution}`)
 
 function addSizeToParent(fileName) {
   let queue = [dictionary[fileName].parent_dir]
@@ -47,11 +55,13 @@ function addSizeToParent(fileName) {
     let parent = queue.shift()
     //console.log({ parent })
     if (dictionary[parent]) {
-      dictionary[parent].size += dictionary[fileName].size
+      dictionary[parent].size += parseInt(dictionary[fileName].size)
       queue.push(dictionary[parent].parent_dir)
     }
   }
 }
+
+console.log(dictionary)
 
 function isCmd(line) {
   return line.startsWith("$")
@@ -95,7 +105,10 @@ function handleLsResponse(parent, prefix, name) {
 
 function addChildrenToParent(parent, name) {
   if (dictionary[parent]) {
-    dictionary[parent].contents.push(name)
+    if (dictionary[parent].contents.includes(name)) {
+    } else {
+      dictionary[parent].contents.push(name)
+    }
   } else {
     dictionary[parent] = {
       type: "dir",
