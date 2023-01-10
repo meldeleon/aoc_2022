@@ -6,6 +6,6 @@ let butts = [
   { height: "3", coordinate: [1, 1] },
 ]
 
-let butts2 = [
-  [0,1]: {height: "3"}
-]
+
+1. all of the edges are visible
+2.
