@@ -1,3 +1,5 @@
+const { dir } = require("console")
+
 const input = require("fs")
   .readFileSync("day07_input.txt")
   .toString()
@@ -29,19 +31,36 @@ for (let i = 0; i < input.length; i++) {
   }
 }
 
-let solution = 0
+let solutionArr = []
+const currentUsedSpace = findDirSize("/", dictionary)
+const unusedSpace = 70000000 - currentUsedSpace
+const memoryToDelete = Math.abs(30000000 - unusedSpace)
+//console.log(currentUsedSpace, memoryToDelete)
 for (entry in dictionary) {
   if (dictionary[entry].type === "dir") {
     let dirSize = findDirSize(entry, dictionary)
-    if (dirSize <= 100000) {
-      solution += dirSize
+    //console.log(entry, dirSize)
+    if (dirSize >= memoryToDelete) {
+      solutionArr.push({
+        dir: entry,
+        size: dirSize,
+      })
     }
   }
 }
 
-console.log(`The solution is ${solution}`)
-
-console.log(dictionary)
+//console.log(solutionArr)
+let solution
+solutionArr.forEach((dir, index) => {
+  if (index === 0) {
+    solution = dir
+  } else {
+    if (dir.size <= solution.size) {
+      solution = dir
+    }
+  }
+})
+console.log(`the solution is ${solution.size}`)
 
 function isCmd(line) {
   return line.startsWith("$")
