@@ -1,6 +1,4 @@
-butt = ["a", "b", "c"]
+butts = "21 sd fart"
 
-if "d" in butt:
-    print(True)
-else:
-    print(False)
+[test, test2, *test3] = butts.split(" ")
+print(test, test2)
