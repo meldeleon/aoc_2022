@@ -1,4 +1,5 @@
-butts = "21 sd fart"
+dict1 = {
+    (0, 1): 4
+}
 
-[test, test2, *test3] = butts.split(" ")
-print(test, test2)
+print(dict1[(0, 1)])

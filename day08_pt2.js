@@ -3,7 +3,7 @@ const input = require("fs")
   .toString()
   .split(/\r?\n/)
 
-console.log(input)
+//console.log(input)
 let forestMap = {}
 const xMax = input[0].length
 const yMax = input.length
@@ -20,28 +20,36 @@ for (let y = 0; y < yMax; y++) {
 let answer = 0
 for (tree in forestMap) {
   let [x, y] = forestMap[tree].coordinate
-  if (checkVisibility([x, y])) {
-    answer++
-    forestMap[tree].visibility = true
+  let visibilityArray = checkVisibilityScore([x, y])
+  let possibleAnswer = visibilityArray.reduce((a, b) => a * b, 1)
+  if (possibleAnswer > answer) {
+    answer = possibleAnswer
   }
 }
-console.log(`there are ${answer} visible trees`)
+console.log(`the best possible viewing score is ${answer}`)
 
-function checkVisibility(coord) {
+function checkVisibilityScore(coord) {
   let [x, y] = coord
   let neighboringTrees = getNeighboringTrees(coord)
+  //console.log(neighboringTrees)
   let coordString = `${x},${y}`
   let height = forestMap[coordString].height
-  let visibility = false
+  let directionScores = []
   for (direction in neighboringTrees) {
-    let max = Math.max(...neighboringTrees[direction])
-    if (max >= height) {
-    } else {
-      visibility = true
-      //console.log("tree is visible")
+    let treeRow = neighboringTrees[direction]
+    //console.log(treeRow)
+    let directionScore = 0
+    for (let i = 0; i < treeRow.length; i++) {
+      if (treeRow[i] < height) {
+        directionScore++
+      } else {
+        directionScore++
+        break
+      }
     }
+    directionScores.push(directionScore)
   }
-  return visibility
+  return directionScores
 }
 
 function getNeighboringTrees(coord) {

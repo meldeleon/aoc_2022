@@ -17,11 +17,11 @@ def change_pwd(arg):
 
 
 def generate_path(pwdArr, name):
-    joinedArr = ("/").join(pwdArr)
-    if joinedArr:
-        return f"/{joinedArr}/{name}"
-    else:
+    if len(pwdArr) == 1:
         return f"/{name}"
+    else:
+        joinedArr = ("/").join(pwdArr)
+        return f"/{joinedArr}/{name}"
 
 
 def add_entry_to_dict(type, path, size):
